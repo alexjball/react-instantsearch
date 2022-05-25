@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
@@ -108,12 +108,15 @@ describe('Pagination', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        document.querySelectorAll('.ais-Pagination-item--page')
+      ).toHaveLength(7)
+    );
 
-    const pageItems = document.querySelectorAll('.ais-Pagination-item--page');
-
-    expect(pageItems).toHaveLength(7);
-    expect(pageItems[0]).toHaveClass('ais-Pagination-item--selected');
+    expect(
+      document.querySelectorAll('.ais-Pagination-item--page')[0]
+    ).toHaveClass('ais-Pagination-item--selected');
     expect(
       document.querySelector('.ais-Pagination-item--firstPage')
     ).toHaveClass('ais-Pagination-item--disabled');
@@ -282,7 +285,11 @@ describe('Pagination', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        document.querySelectorAll('.ais-Pagination-item--page')
+      ).toHaveLength(7)
+    );
 
     search.mockClear();
 
@@ -454,7 +461,7 @@ describe('Pagination', () => {
     // We navigate to page 2
     userEvent.click(getByText('2'));
 
-    await wait(0);
+    await wait(100);
 
     expect(search).toHaveBeenLastCalledWith([
       expect.objectContaining({
@@ -601,7 +608,7 @@ describe('Pagination', () => {
     // We click on "Next" link
     userEvent.click(getByText('›'));
 
-    await wait(0);
+    await wait(100);
 
     expect(search).toHaveBeenLastCalledWith([
       expect.objectContaining({
@@ -748,7 +755,7 @@ describe('Pagination', () => {
     // We click on "Last" link
     userEvent.click(getByText('››'));
 
-    await wait(0);
+    await wait(100);
 
     expect(search).toHaveBeenLastCalledWith([
       expect.objectContaining({
@@ -903,7 +910,7 @@ describe('Pagination', () => {
       lastPageItem!.querySelector('.ais-Pagination-link') as HTMLAnchorElement
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(search).not.toHaveBeenCalled();
 
@@ -914,7 +921,7 @@ describe('Pagination', () => {
       ) as HTMLAnchorElement
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(search).toHaveBeenLastCalledWith([
       expect.objectContaining({
@@ -1063,7 +1070,7 @@ describe('Pagination', () => {
       firstPageItem!.querySelector('.ais-Pagination-link') as HTMLAnchorElement
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(search).toHaveBeenLastCalledWith([
       expect.objectContaining({
@@ -1313,11 +1320,12 @@ describe('Pagination', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        document.querySelectorAll('.ais-Pagination-item--page')
+      ).toHaveLength(9)
+    );
 
-    expect(
-      document.querySelectorAll('.ais-Pagination-item--page')
-    ).toHaveLength(9);
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -1496,11 +1504,12 @@ describe('Pagination', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        document.querySelectorAll('.ais-Pagination-item--page')
+      ).toHaveLength(6)
+    );
 
-    expect(
-      document.querySelectorAll('.ais-Pagination-item--page')
-    ).toHaveLength(6);
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -1646,11 +1655,12 @@ describe('Pagination', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        document.querySelectorAll('.ais-Pagination-item--page')
+      ).toHaveLength(4)
+    );
 
-    expect(
-      document.querySelectorAll('.ais-Pagination-item--page')
-    ).toHaveLength(4);
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div

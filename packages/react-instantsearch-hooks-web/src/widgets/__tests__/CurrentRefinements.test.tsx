@@ -246,7 +246,7 @@ describe('CurrentRefinements', () => {
 
     userEvent.click(button3);
 
-    await wait(0);
+    await wait(100);
 
     expect(queryByText('Audio')).toBeNull();
     expect(queryByText('Apple')).not.toBeNull();
@@ -261,7 +261,7 @@ describe('CurrentRefinements', () => {
 
     userEvent.click(button1);
 
-    await wait(0);
+    await wait(100);
 
     expect(queryByText('Audio')).toBeNull();
     expect(queryByText('Apple')).toBeNull();
@@ -275,7 +275,7 @@ describe('CurrentRefinements', () => {
 
     userEvent.click(button2);
 
-    await wait(0);
+    await wait(100);
 
     expect(queryByText('Audio')).toBeNull();
     expect(queryByText('Apple')).toBeNull();

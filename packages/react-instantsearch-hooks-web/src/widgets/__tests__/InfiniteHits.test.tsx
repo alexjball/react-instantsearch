@@ -55,10 +55,10 @@ describe('InfiniteHits', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
-
-    expect(container.querySelectorAll('.ais-InfiniteHits-item')).toHaveLength(
-      3
+    await waitFor(() =>
+      expect(container.querySelectorAll('.ais-InfiniteHits-item')).toHaveLength(
+        3
+      )
     );
 
     expect(container.querySelector('.ais-InfiniteHits')).toMatchInlineSnapshot(`
@@ -125,9 +125,10 @@ describe('InfiniteHits', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(container.querySelectorAll('strong')).toHaveLength(3)
+    );
 
-    expect(container.querySelectorAll('strong')).toHaveLength(3);
     expect(container.querySelector('.ais-InfiniteHits')).toMatchInlineSnapshot(`
         <div
           class="ais-InfiniteHits"
@@ -183,9 +184,9 @@ describe('InfiniteHits', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
-
-    expect(container.querySelectorAll('strong')).toHaveLength(3);
+    await waitFor(() =>
+      expect(container.querySelectorAll('strong')).toHaveLength(3)
+    );
 
     expect(searchClient.search).toHaveBeenCalledTimes(1);
     expect(searchClient.search).toHaveBeenLastCalledWith([
@@ -205,7 +206,7 @@ describe('InfiniteHits', () => {
       userEvent.click(container.querySelector('.ais-InfiniteHits-loadMore')!);
     });
 
-    await wait(0);
+    await wait(100);
 
     expect(container.querySelectorAll('strong')).toHaveLength(6);
 
@@ -238,9 +239,9 @@ describe('InfiniteHits', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
-
-    expect(container.querySelectorAll('strong')).toHaveLength(3);
+    await waitFor(() =>
+      expect(container.querySelectorAll('strong')).toHaveLength(3)
+    );
 
     expect(searchClient.search).toHaveBeenCalledTimes(1);
     expect(searchClient.search).toHaveBeenLastCalledWith([
@@ -262,7 +263,7 @@ describe('InfiniteHits', () => {
       );
     });
 
-    await wait(0);
+    await wait(100);
 
     expect(container.querySelectorAll('strong')).toHaveLength(6);
 

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
@@ -114,13 +114,14 @@ describe('RefinementList', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(
+        container.querySelectorAll('.ais-RefinementList-item')
+      ).toHaveLength(10)
+    );
 
     expect(client.search).toHaveBeenCalledTimes(1);
 
-    expect(container.querySelectorAll('.ais-RefinementList-item')).toHaveLength(
-      10
-    );
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -396,7 +397,7 @@ describe('RefinementList', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     const [checkbox1, checkbox2] = [
       ...(container.querySelectorAll(
@@ -428,11 +429,12 @@ describe('RefinementList', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
-
-    expect(container.querySelectorAll('.ais-RefinementList-item')).toHaveLength(
-      5
+    await waitFor(() =>
+      expect(
+        container.querySelectorAll('.ais-RefinementList-item')
+      ).toHaveLength(5)
     );
+
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -578,7 +580,7 @@ describe('RefinementList', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(
       [...container.querySelectorAll('.ais-RefinementList-item')].map(
@@ -609,7 +611,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(
@@ -637,7 +639,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(
@@ -665,7 +667,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-RefinementList-count')).map(
@@ -693,7 +695,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(
@@ -721,7 +723,7 @@ describe('RefinementList', () => {
       userEvent.click(checkbox1);
       userEvent.click(checkbox2);
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(
@@ -752,7 +754,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(
@@ -786,7 +788,7 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       const searchInput = container.querySelector(
         '.ais-SearchBox-input'
@@ -819,7 +821,7 @@ describe('RefinementList', () => {
 
       userEvent.type(searchInput, 'app');
 
-      await wait(0);
+      await wait(100);
 
       // One call per keystroke
       expect(client.searchForFacetValues).toHaveBeenCalledTimes(3);
@@ -1010,16 +1012,18 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await waitFor(() =>
+        expect(
+          container.querySelectorAll('.ais-RefinementList-item')
+        ).toHaveLength(10)
+      );
 
       const showMoreButton = container.querySelector(
         '.ais-RefinementList-showMore'
       ) as HTMLButtonElement;
 
       expect(showMoreButton).toHaveTextContent('Show more');
-      expect(
-        container.querySelectorAll('.ais-RefinementList-item')
-      ).toHaveLength(10);
+
       expect(container).toMatchInlineSnapshot(`
         <div>
           <div
@@ -1290,11 +1294,12 @@ describe('RefinementList', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await waitFor(() =>
+        expect(
+          container.querySelectorAll('.ais-RefinementList-item')
+        ).toHaveLength(10)
+      );
 
-      expect(
-        container.querySelectorAll('.ais-RefinementList-item')
-      ).toHaveLength(10);
       expect(
         container.querySelector('.ais-RefinementList-showMore')
       ).toBeInTheDocument();

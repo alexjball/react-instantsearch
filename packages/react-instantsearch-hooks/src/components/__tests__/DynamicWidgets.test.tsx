@@ -405,7 +405,6 @@ describe('DynamicWidgets', () => {
 
     const { container, rerender } = render(<App attributes={['brand']} />);
 
-    await wait(0);
     await waitFor(() => {
       expect(container).toMatchInlineSnapshot(`
 <div>
@@ -423,7 +422,7 @@ describe('DynamicWidgets', () => {
       rerender(<App attributes={['brand', 'categories']} />);
     });
 
-    await wait(0);
+    await wait(100);
     await waitFor(() => {
       expect(container).toMatchInlineSnapshot(`
 <div>
@@ -443,7 +442,7 @@ describe('DynamicWidgets', () => {
       rerender(<App attributes={['brand']} />);
     });
 
-    await wait(0);
+    await wait(100);
     await waitFor(() => {
       expect(container).toMatchInlineSnapshot(`
 <div>

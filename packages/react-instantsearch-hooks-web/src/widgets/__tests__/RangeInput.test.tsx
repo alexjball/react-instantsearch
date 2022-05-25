@@ -45,7 +45,7 @@ describe('RangeInput', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(1);
 
@@ -152,7 +152,7 @@ describe('RangeInput', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(1);
 

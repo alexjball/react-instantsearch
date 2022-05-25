@@ -172,7 +172,7 @@ describe('Breadcrumb', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(
       [...container.querySelectorAll('.ais-Breadcrumb-item')].map(
@@ -206,7 +206,7 @@ describe('Breadcrumb', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(searchClient.search).toHaveBeenCalledTimes(1);
     expect(container).toMatchInlineSnapshot(`

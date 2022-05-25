@@ -128,7 +128,7 @@ describe('SortBy', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledWith(
       expect.arrayContaining([
@@ -141,7 +141,7 @@ describe('SortBy', () => {
       getByRole('option', { name: 'Price (asc)' })
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(document.querySelector('.ais-SortBy-select')).toHaveValue(
       'instant_search_price_asc'

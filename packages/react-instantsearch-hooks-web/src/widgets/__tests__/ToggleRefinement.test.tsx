@@ -86,7 +86,7 @@ describe('ToggleRefinement', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(1);
 
@@ -98,7 +98,7 @@ describe('ToggleRefinement', () => {
 
     userEvent.click(checkbox);
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(2);
     expect(client.search).toHaveBeenLastCalledWith(
@@ -116,7 +116,7 @@ describe('ToggleRefinement', () => {
 
     userEvent.click(checkbox);
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(3);
     expect(client.search).toHaveBeenLastCalledWith(
@@ -141,7 +141,7 @@ describe('ToggleRefinement', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(1);
 
@@ -151,7 +151,7 @@ describe('ToggleRefinement', () => {
 
     userEvent.click(checkbox);
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(2);
     expect(client.search).toHaveBeenLastCalledWith(
@@ -168,7 +168,7 @@ describe('ToggleRefinement', () => {
 
     userEvent.click(checkbox);
 
-    await wait(0);
+    await wait(100);
 
     expect(client.search).toHaveBeenCalledTimes(3);
     expect(client.search).toHaveBeenLastCalledWith(

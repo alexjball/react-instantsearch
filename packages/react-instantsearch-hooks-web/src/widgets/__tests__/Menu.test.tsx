@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
@@ -54,11 +54,12 @@ describe('Menu', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10)
+    );
 
     expect(client.search).toHaveBeenCalledTimes(1);
 
-    expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10);
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -293,9 +294,10 @@ describe('Menu', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await waitFor(() =>
+      expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(5)
+    );
 
-    expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(5);
     expect(container).toMatchInlineSnapshot(`
       <div>
         <div
@@ -421,7 +423,7 @@ describe('Menu', () => {
       </InstantSearchHooksTestWrapper>
     );
 
-    await wait(0);
+    await wait(100);
 
     expect(
       [...container.querySelectorAll('.ais-Menu-item')].map(
@@ -452,7 +454,7 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -480,7 +482,7 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -508,7 +510,7 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-count')).map(
@@ -545,7 +547,7 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -566,7 +568,7 @@ describe('Menu', () => {
 
       userEvent.click(await findByText('Hamilton Beach n'));
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -587,7 +589,7 @@ describe('Menu', () => {
 
       userEvent.click(await findByText('Frigidaire n'));
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -618,7 +620,7 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await wait(100);
 
       expect(
         Array.from(container.querySelectorAll('.ais-Menu-label')).map(
@@ -648,14 +650,15 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await waitFor(() =>
+        expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10)
+      );
 
       const showMoreButton = container.querySelector(
         '.ais-Menu-showMore'
       ) as HTMLButtonElement;
 
       expect(showMoreButton).toHaveTextContent('Show more');
-      expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10);
       expect(container).toMatchInlineSnapshot(`
         <div>
           <div
@@ -880,9 +883,10 @@ describe('Menu', () => {
         </InstantSearchHooksTestWrapper>
       );
 
-      await wait(0);
+      await waitFor(() =>
+        expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10)
+      );
 
-      expect(container.querySelectorAll('.ais-Menu-item')).toHaveLength(10);
       expect(container.querySelector('.ais-Menu-showMore')).toBeInTheDocument();
 
       userEvent.click(
