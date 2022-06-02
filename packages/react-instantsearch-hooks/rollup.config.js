@@ -52,6 +52,7 @@ const createConfiguration = ({ name, minify = false } = {}) => ({
     format: 'umd',
     globals: {
       react: 'React',
+      'use-sync-external-store/shim': 'useSyncExternalStore',
     },
     banner: createBanner(name),
     sourcemap: true,
