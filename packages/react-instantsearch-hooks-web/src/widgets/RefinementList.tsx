@@ -29,7 +29,7 @@ export type RefinementListProps = Omit<
   UseRefinementListProps &
   Pick<RefinementListWidgetParams, 'searchable' | 'searchablePlaceholder'>;
 
-export function RefinementList({
+export function useRefinementListUiProps({
   searchable,
   searchablePlaceholder,
   attribute,
@@ -124,7 +124,13 @@ export function RefinementList({
     isShowingMore,
   };
 
-  return (
-    <RefinementListUiComponent {...props} {...uiProps} showMore={showMore} />
-  );
+  return {
+    ...props,
+    ...uiProps,
+    showMore,
+  };
+}
+
+export function RefinementList(props: RefinementListProps) {
+  return <RefinementListUiComponent {...useRefinementListUiProps(props)} />;
 }
